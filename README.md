@@ -226,7 +226,7 @@ Ouvrez l'url `http://test.dev`. Le contenu simple du fichier `index.html` devrai
 
 ## 5. trouble shooting
 
-Vérifiez qu'il n'y a pas de coquille dans les noms de domaines que vous avez créé dans :
+Vérifiez qu'il n'y a pas de coquille dans les noms de domaine que vous avez créé dans :
 
 - le fichier `hosts`
 - le fichier `httpd-vhosts.conf`
@@ -234,7 +234,7 @@ Vérifiez qu'il n'y a pas de coquille dans les noms de domaines que vous avez cr
 
 Si vous avez défini un port autre que le port 80 pour apache, pensez à rajouter le port dans l'url (`http://test.dev:8000` par exemple).
 
-Avec wamp, assurez-vous que toutes les fichiers `dll` sont bien installés. La page [http://wampserver.aviatechno.net/](http://wampserver.aviatechno.net/) permet de télécharger un fichier zip avec toutes les `dll` nécessaires (voir en bas de page).
+Avec wamp, assurez-vous que tous les fichiers `dll` sont bien installés. La page [http://wampserver.aviatechno.net/](http://wampserver.aviatechno.net/) permet de télécharger un fichier zip avec toutes les `dll` nécessaires (voir en bas de page).
 
 ## licence
 
