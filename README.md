@@ -216,7 +216,7 @@ Dans le dossier `/Applications/XAMPP/htdocs`, créez un dossier `test.dev`. Dans
 
 Dans le dossier `/Applications/XAMPP/htdocs`, créez les dossiers qui correspondent aux noms de domaine que vous avez créé dans le fichier `hosts`. Dans chaque dossier, créez un fichier `index.html` avec un contenu simple (par exemple `domaine : test.dev`).
 
-## testez
+## 4. testez
 
 Redémarrez apache.
 
@@ -224,7 +224,7 @@ Ouvrez votre navigateur web.
 
 Ouvrez l'url `http://test.dev`. Le contenu simple du fichier `index.html` devrait s'afficher (par exemple `domaine : test.dev`).
 
-## trouble shooting
+## 5. trouble shooting
 
 Vérifiez qu'il n'y a pas de coquille dans les noms de domaines que vous avez créé dans :
 

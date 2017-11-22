@@ -241,7 +241,7 @@ Dupliquez le bloc <code>test.dev</code> et adaptez-le à vos besoins.</p>
 
 <p>Dans le dossier <code>/Applications/XAMPP/htdocs</code>, créez les dossiers qui correspondent aux noms de domaine que vous avez créé dans le fichier <code>hosts</code>. Dans chaque dossier, créez un fichier <code>index.html</code> avec un contenu simple (par exemple <code>domaine : test.dev</code>).</p>
 
-<h2>testez</h2>
+<h2>4. testez</h2>
 
 <p>Redémarrez apache.</p>
 
@@ -249,7 +249,7 @@ Dupliquez le bloc <code>test.dev</code> et adaptez-le à vos besoins.</p>
 
 <p>Ouvrez l'url <code>http://test.dev</code>. Le contenu simple du fichier <code>index.html</code> devrait s'afficher (par exemple <code>domaine : test.dev</code>).</p>
 
-<h2>trouble shooting</h2>
+<h2>5. trouble shooting</h2>
 
 <p>Vérifiez qu'il n'y a pas de coquille dans les noms de domaines que vous avez créé dans :</p>
 
@@ -258,6 +258,8 @@ Dupliquez le bloc <code>test.dev</code> et adaptez-le à vos besoins.</p>
 <li>le fichier <code>httpd-vhosts.conf</code></li>
 <li>les noms de dossiers</li>
 </ul>
+
+<p>Si vous avez défini un port autre que le port 80 pour apache, pensez à rajouter le port dans l'url (<code>http://test.dev:8000</code> par exemple).</p>
 
 <p>Avec wamp, assurez-vous que toutes les fichiers <code>dll</code> sont bien installés. La page <a href="http://wampserver.aviatechno.net/">http://wampserver.aviatechno.net/</a> permet de télécharger un fichier zip avec toutes les <code>dll</code> nécessaires (voir en bas de page).</p>
 
