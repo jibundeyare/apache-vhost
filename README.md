@@ -232,6 +232,8 @@ Vérifiez qu'il n'y a pas de coquille dans les noms de domaines que vous avez cr
 - le fichier `httpd-vhosts.conf`
 - les noms de dossiers
 
+Si vous avez défini un port autre que le port 80 pour apache, pensez à rajouter le port dans l'url (`http://test.dev:8000` par exemple).
+
 Avec wamp, assurez-vous que toutes les fichiers `dll` sont bien installés. La page [http://wampserver.aviatechno.net/](http://wampserver.aviatechno.net/) permet de télécharger un fichier zip avec toutes les `dll` nécessaires (voir en bas de page).
 
 ## licence
