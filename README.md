@@ -162,22 +162,6 @@ Ajoutez l'adresse IP et le nom de domaine suivants :
 
 Enregistrez, tapez votre mot de passe et quittez votre éditeur de code.
 
-### Linux
-
-Ouvrez un terminal.
-
-Tapez la commande suivante : `sudo nano /etc/hosts`
-
-Ajoutez l'adresse IP et le nom de domaine suivants :
-
-    127.0.0.1 example.test
-
-Enregistrez et quittez `nano`.
-
-Pour enregistrer, appuyez sur `CTRL + O` puis valider avec la touche `ENTER` (`ENTRÉE` en français).
-
-Pour quitter, appuyez sur `CTRL + X`.
-
 ## 5. Ajouter un vhost dans la config d'Apache
 
 ### Wamp
