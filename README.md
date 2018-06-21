@@ -1,4 +1,4 @@
-# Apache
+# Apache vhost
 
 Ce tuto montre comment configurer Apache et des noms de domaine locaux (`http://example.test` par exemple).
 
