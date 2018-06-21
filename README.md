@@ -1,32 +1,144 @@
-# apache
+# Apache
 
-Ce tuto montre comment configurer apache et des noms de domaine locaux (`http://test.dev` par exemple).
+Ce tuto montre comment configurer Apache et des noms de domaine locaux (`http://example.test` par exemple).
 
 Il s'applique à :
 
-- wamp (windows)
-- mamp (macos)
-- xampp (macos)
+- Wamp (Windows)
+- Mamp (MacOS)
+- Xampp (MacOS)
 
 Notez que **vhost = virtual host**
 
-## 1. configurez vos noms de domaine <small>(fichier `hosts`)</small>
+## Wamp
 
-### windows
+**Attention** : si votre installation est en 32 bit, Wamp se trouve alors dans `C:\wamp` et non `C:\wamp64`.
+Adaptez les instructions ci-dessous.
+
+## Démarrer un nouveau projet
+
+À chaque fois que vous démarrez un nouveau projet, vous devez répêter les tâches suivantes :
+
+- 4. ajouter le nom de domaine dans le fichier `hosts`
+- 5. ajoutez un vhost dans la config d'Apache
+- 6. créer le dossier du projet
+- 7. tester
+
+## 1. Activer les vhosts
+
+Vous devez activer les vhosts d'Apache pour pouvoir utiliser les noms de domaine locaux.
+
+### Wamp
+
+Ouvrez votre éditeur de code.
+
+Ouvrez le fichier `C:\wamp64\bin\apache\apache2.4.9\conf\httpd.conf`.
+
+Recherchez le mot clé `vhosts` et trouvez la ligne suivante :
+
+    #Include conf/extra/httpd-vhosts.conf
+
+Activez la ligne en supprimant le symbole dièse en début de ligne :
+
+    Include conf/extra/httpd-vhosts.conf
+
+### Mamp
+
+Ouvrez votre éditeur de code.
+
+Ouvrez le fichier le fichier `/Applications/MAMP/conf/apache/httpd.conf`.
+
+Recherchez le mot clé `vhosts` et trouvez la ligne suivante :
+
+    #Include /Applications/MAMP/conf/apache/extra/httpd-vhosts.conf
+
+Activez la ligne en supprimant le symbole dièse en début de ligne :
+
+    Include /Applications/MAMP/conf/apache/extra/httpd-vhosts.conf
+
+### Xampp
+
+Ouvrez votre éditeur de code.
+
+Ouvrez le fichier `/Applications/XAMPP/etc/httpd.conf`.
+
+Recherchez le mot clé `vhosts` et trouvez la ligne suivante :
+
+    #Include etc/extra/httpd-vhosts.conf
+
+Activez la ligne en supprimant le symbole dièse en début de ligne :
+
+    Include etc/extra/httpd-vhosts.conf
+
+## 2. Sauvegarder les vhosts d'usine
+
+Il est recommandé de sauvegarder la configuration des vhosts d'usine « au cas où ».
+
+### Wamp
+
+Ouvrez l'explorateur de fichier.
+
+Trouvez le fichier :
+
+    C:\wamp64\bin\apache\apache2.4.9\conf\extra\httpd-vhosts.conf
+
+Renommer-le :
+
+    C:\wamp64\bin\apache\apache2.4.9\conf\extra\httpd-vhosts.conf.original
+
+### Mamp
+
+Ouvrez Finder.
+
+Trouvez le fichier :
+
+    /Applications/MAMP/conf/apache/extra/httpd-vhosts.conf
+
+Renommer-le :
+
+    /Applications/MAMP/conf/apache/extra/httpd-vhosts.conf.original
+
+### Xampp
+
+Ouvrez Finder.
+
+Trouvez le fichier :
+
+    /Applications/XAMPP/etc/extra/httpd-vhosts.conf
+
+Renommer-le :
+
+    /Applications/XAMPP/etc/extra/httpd-vhosts.conf.original
+
+## 3. Préparez votre configuration de vhosts
+
+### Wamp
+
+Copiez le fichier `wamp-httpd-vhosts.conf` dans le dossier `C:\wamp64\bin\apache\apache2.4.9\conf\extra\` et renommez-le `httpd-vhosts.conf`.
+
+### Mamp
+
+Copiez le fichier `mamp-httpd-vhosts.conf` dans le dossier `/Applications/MAMP/conf/apache/extra/` et renommez-le `httpd-vhosts.conf`.
+
+### Xampp
+
+Copiez le fichier `xampp-httpd-vhosts.conf` dans le dossier `/Applications/XAMPP/etc/extra/` et renommez-le `httpd-vhosts.conf`.
+
+## 4. Ajouter le nom de domaine dans le fichier `hosts`
+
+### Windows
 
 Éxécuter votre éditeur de code en tant qu'administrateur.
 
 Ouvrez le fichier `C:\Windows\System32\drivers\etc\hosts`.
 
-Ajoutez l'adresse ip et le nom de domaine suivants :
+Ajoutez l'adresse IP et le nom de domaine suivants :
 
-    127.0.0.1 test.dev
-
-Créez-en d'autres si besoin.
+    127.0.0.1 example.test
 
 Enregistrez et quittez votre éditeur de code.
 
-### macos
+### MacOS
 
 Ouvrez votre éditeur de code.
 
@@ -44,187 +156,95 @@ Alternativement, vous pouvez utiliser le terminal pour ouvrir le fichier `/etc/h
 
     open -a Atom /etc/hosts
 
-Ajoutez l'adresse ip et le nom de domaine suivants :
+Ajoutez l'adresse IP et le nom de domaine suivants :
 
-    127.0.0.1 test.dev
+    127.0.0.1 example.test
 
-Créez-en d'autres si besoin.
+Enregistrez, tapez votre mot de passe et quittez votre éditeur de code.
 
-Enregistrez et tapez votre mot de passe.
-
-### linux
+### Linux
 
 Ouvrez un terminal.
 
 Tapez la commande suivante : `sudo nano /etc/hosts`
 
-Ajoutez l'adresse ip et le nom de domaine suivants :
+Ajoutez l'adresse IP et le nom de domaine suivants :
 
-    127.0.0.1 test.dev
-
-Ajoutez-en d'autres si besoin.
+    127.0.0.1 example.test
 
 Enregistrez et quittez `nano`.
 
 Pour enregistrer, appuyez sur `CTRL + O` puis valider avec la touche `ENTER` (`ENTRÉE` en français).
+
 Pour quitter, appuyez sur `CTRL + X`.
 
-## 2. configurez vos vhosts <small>(fichier `httpd-vhosts.conf`)</small>
+## 5. Ajouter un vhost dans la config d'Apache
 
-**Attention** : si vous utilisez wamp, votre installation est peut-être en 32 bit. Wamp se trouve alors dans `C:\wamp` et non `C:\wamp64`. Adaptez les instructions ci-dessous.
+### Wamp
 
-### 2.1 activez les vhosts
+Avec votre éditeur de code, ouvrez le fichier `C:\wamp64\bin\apache\apache2.4.9\conf\extra\httpd-vhosts.conf`.
 
-#### wamp
+Dupliquez le bloc `example.test`.
 
-Ouvrez votre éditeur de code.
+Supprimez les dièses `#` en début de ligne.
 
-Ouvrez le fichier `C:\wamp64\bin\apache\apache2.4.9\conf\httpd.conf`.
+Adaptez le nom de domaine à votre projet.
 
-Recherchez le mot clé `vhosts` et trouvez la ligne suivante :
+### Mamp
 
-    #Include conf/extra/httpd-vhosts.conf
+Avec votre éditeur de code, ouvrez le fichier `/Applications/MAMP/conf/apache/extra/httpd-vhosts.conf`.
 
-Activez la ligne en supprimant le symbole dièse en début de ligne :
+Dupliquez le bloc `example.test`.
 
-    Include conf/extra/httpd-vhosts.conf
+Supprimez les dièses `#` en début de ligne.
 
-#### mamp
+Adaptez le nom de domaine à votre projet.
 
-Ouvrez votre éditeur de code.
+### Xampp
 
-Ouvrez le fichier le fichier `/Applications/MAMP/conf/apache/httpd.conf`.
+Avec votre éditeur de code, ouvrez le fichier `/Applications/XAMPP/etc/extra/httpd-vhosts.conf`.
 
-Recherchez le mot clé `vhosts` et trouvez la ligne suivante :
+Dupliquez le bloc `example.test`.
 
-    #Include /Applications/MAMP/conf/apache/extra/httpd-vhosts.conf
+Supprimez les dièses `#` en début de ligne.
 
-Activez la ligne en supprimant le symbole dièse en début de ligne :
+Adaptez le nom de domaine à votre projet.
 
-    Include /Applications/MAMP/conf/apache/extra/httpd-vhosts.conf
+## 6. Créer le dossier du projet
 
-#### xampp
-
-Ouvrez votre éditeur de code.
-
-Ouvrez le fichier `/Applications/XAMPP/etc/httpd.conf`.
-
-Recherchez le mot clé `vhosts` et trouvez la ligne suivante :
-
-    #Include etc/extra/httpd-vhosts.conf
-
-Activez la ligne en supprimant le symbole dièse en début de ligne :
-
-    Include etc/extra/httpd-vhosts.conf
-
-### 2.2 sauvegardez les vhosts d'usine
-
-#### wamp
+### Wamp
 
 Ouvrez l'explorateur de fichier.
 
-Trouvez le fichier :
+Dans le dossier `C:\wamp64\www`, créez un dossier `example.test`.
 
-    C:\wamp64\bin\apache\apache2.4.9\conf\extra\httpd-vhosts.conf
+Dans le dossier `C:\wamp64\www\example.test`, créez un fichier `index.html` avec un contenu simple (par exemple `Hello example.test!`).
 
-Renommer-le :
-
-    C:\wamp64\bin\apache\apache2.4.9\conf\extra\httpd-vhosts.conf.original
-
-#### mamp
+### Mamp
 
 Ouvrez Finder.
 
-Trouvez le fichier :
+Dans le dossier `/Applications/MAMP/htdocs`, créez un dossier `example.test`.
 
-    /Applications/MAMP/conf/apache/extra/httpd-vhosts.conf
+Dans le dossier `/Applications/MAMP/htdocs/example.test`, créez un fichier `index.html` avec un contenu simple (par exemple `Hello example.test!`).
 
-Renommer-le :
-
-    /Applications/MAMP/conf/apache/extra/httpd-vhosts.conf.original
-
-#### xampp
+### Xampp
 
 Ouvrez Finder.
 
-Trouvez le fichier :
+Dans le dossier `/Applications/XAMPP/htdocs`, créez un dossier `example.test`.
 
-    /Applications/XAMPP/etc/extra/httpd-vhosts.conf
+Dans le dossier `/Applications/XAMPP/htdocs/example.test`, créez un fichier `index.html` avec un contenu simple (par exemple `Hello example.test!`).
 
-Renommer-le :
+## 7. Tester
 
-    /Applications/XAMPP/etc/extra/httpd-vhosts.conf.original
-
-### 2.3 créez vos vhosts
-
-#### wamp
-
-Copiez le fichier `wamp-httpd-vhosts.conf` dans le dossier `C:\wamp64\bin\apache\apache2.4.9\conf\extra\` et renommez-le `httpd-vhosts.conf`.
-
-Ouvrez votre éditeur de code.
-
-Ouvrez le fichier `httpd-vhosts.conf` et créez les vhosts qui correspondent aux noms de domaine que vous avez créé dans le fichier `hosts`.
-Dupliquez le bloc `test.dev` et adaptez-le à vos besoins.
-
-#### mamp
-
-Copiez le fichier `mamp-httpd-vhosts.conf` dans le dossier `/Applications/MAMP/conf/apache/extra/` et renommez-le `httpd-vhosts.conf`.
-
-Ouvrez votre éditeur de code.
-
-Ouvrez le fichier `httpd-vhosts.conf` et créez les vhosts qui correspondent aux noms de domaine que vous avez créé dans le fichier `hosts`.
-Dupliquez le bloc `test.dev` et adaptez-le à vos besoins.
-
-#### xampp
-
-Copiez le fichier `xampp-httpd-vhosts.conf` dans le dossier `/Applications/XAMPP/etc/extra/` et renommez-le `httpd-vhosts.conf`.
-
-Ouvrez votre éditeur de code.
-
-Ouvrez le fichier `httpd-vhosts.conf` et créez les vhosts qui correspondent aux noms de domaine que vous avez créé dans le fichier `hosts`.
-Dupliquez le bloc `test.dev` et adaptez-le à vos besoins.
-
-## 3. organisez votre dossier web
-
-### wamp
-
-Ouvrez l'explorateur de fichier.
-
-Dans le dossier `C:\wamp64\www`, créez un dossier `default`. Déplacez-y tous les dossiers et fichiers présents dans `C:\wamp64\www`.
-
-Dans le dossier `C:\wamp64\www`, créez un dossier `test.dev`. Dans le dossier `C:\wamp64\www\test.dev`, créez un fichier `index.html` avec un contenu simple (par exemple `domaine : test.dev`).
-
-Dans le dossier `C:\wamp64\www`, créez les dossiers qui correspondent aux noms de domaine que vous avez créé dans le fichier `hosts`. Dans chaque dossier, créez un fichier `index.html` avec un contenu simple (par exemple `domaine : test.dev`).
-
-### mamp
-
-Ouvrez Finder.
-
-Dans le dossier `/Applications/MAMP/htdocs`, créez un dossier `default`. Déplacez-y tous les dossiers et fichiers présents dans `/Applications/MAMP/htdocs`.
-
-Dans le dossier `/Applications/MAMP/htdocs`, créez un dossier `test.dev`. Dans le dossier `/Applications/MAMP/htdocs/test.dev`, créez un fichier `index.html` avec un contenu simple (par exemple `domaine : test.dev`).
-
-Dans le dossier `/Applications/MAMP/htdocs`, créez les dossiers qui correspondent aux noms de domaine que vous avez créé dans le fichier `hosts`. Dans chaque dossier, créez un fichier `index.html` avec un contenu simple (par exemple `domaine : test.dev`).
-
-### xampp
-
-Ouvrez Finder.
-
-Dans le dossier `/Applications/XAMPP/htdocs`, créez un dossier `default`. Déplacez-y tous les dossiers et fichiers présents dans `/Applications/XAMPP/htdocs`.
-
-Dans le dossier `/Applications/XAMPP/htdocs`, créez un dossier `test.dev`. Dans le dossier `/Applications/XAMPP/htdocs/test.dev`, créez un fichier `index.html` avec un contenu simple (par exemple `domaine : test.dev`).
-
-Dans le dossier `/Applications/XAMPP/htdocs`, créez les dossiers qui correspondent aux noms de domaine que vous avez créé dans le fichier `hosts`. Dans chaque dossier, créez un fichier `index.html` avec un contenu simple (par exemple `domaine : test.dev`).
-
-## 4. testez
-
-Redémarrez apache.
+Redémarrez Apache.
 
 Ouvrez votre navigateur web.
 
-Ouvrez l'url `http://test.dev`. Le contenu simple du fichier `index.html` devrait s'afficher (par exemple `domaine : test.dev`).
+Ouvrez l'url `http://example.test`. Le contenu simple du fichier `index.html` devrait s'afficher (par exemple `Hello example.test!`).
 
-## 5. trouble shooting
+## 8. Trouble shooting
 
 Vérifiez qu'il n'y a pas de coquille dans les noms de domaine que vous avez créé dans :
 
@@ -232,10 +252,11 @@ Vérifiez qu'il n'y a pas de coquille dans les noms de domaine que vous avez cr�
 - le fichier `httpd-vhosts.conf`
 - les noms de dossiers
 
-Si vous avez défini un port autre que le port 80 pour apache, pensez à rajouter le port dans l'url (`http://test.dev:8000` par exemple).
+Si vous avez défini un port autre que le port 80 pour Apache, pensez à rajouter le port dans l'url (`http://example.test:8000` par exemple).
 
 Avec wamp, assurez-vous que tous les fichiers `dll` sont bien installés. La page [http://wampserver.aviatechno.net/](http://wampserver.aviatechno.net/) permet de télécharger un fichier zip avec toutes les `dll` nécessaires (voir en bas de page).
 
-## licence
+## Licence
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/fr/"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/3.0/fr/88x31.png" /></a><br />Ce(tte) œuvre est mise à disposition selon les termes de la <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/fr/">Licence Creative Commons Attribution - Pas d’Utilisation Commerciale - Partage dans les Mêmes Conditions 3.0 France</a>.
+
